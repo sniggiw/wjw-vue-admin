@@ -1,7 +1,13 @@
 import { createApp } from 'vue';
-import router from './router/index';
+import router, { setupRouter } from './router/index';
 import App from './App.vue';
 
-const app = createApp(App);
-app.use(router);
-app.mount('#app');
+async function bootstrap() {
+    const app = createApp(App);
+    setupRouter(app);
+    // 等待路由完全处理好了之后再去挂载页面
+    await router.isReady();
+    app.mount('#app');
+}
+
+bootstrap();
