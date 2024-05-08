@@ -1,10 +1,10 @@
+// 手动注册的路由
 import { RouteRecordRaw } from 'vue-router';
 
 const routes = [
     {
         path: '/',
-        component: () => import('@/layouts/admin.vue'),
-        children: [{ path: 'home', component: () => import('@/views/home.vue') }],
+        component: () => import('@/views/home.vue'),
     },
 ] as RouteRecordRaw[];
 
