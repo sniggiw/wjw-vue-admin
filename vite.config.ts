@@ -1,14 +1,9 @@
 import { defineConfig, loadEnv } from 'vite';
-import vue from '@vitejs/plugin-vue';
+// import vue from '@vitejs/plugin-vue';
 import alias from './vite/alias';
 import { parseEnv } from './vite/util';
 
-// export default defineConfig({
-//     plugins: [vue()],
-//     resolve: {
-//         alias,
-//     },
-// });
+import setupPlugins from './vite/plugins';
 
 export default defineConfig(({ command, mode }) => {
     // 在开发环境下 command 的值为 serve，而在生产环境下为 build
@@ -19,7 +14,8 @@ export default defineConfig(({ command, mode }) => {
     // parseEnv(env)
 
     return {
-        plugins: [vue()],
+        // plugins: [vue()],
+        plugins: setupPlugins(isBulid, env),
         resolve: {
             alias,
         },
